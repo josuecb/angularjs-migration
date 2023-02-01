@@ -17,7 +17,8 @@ import './app.routes';
 
 import './polyfills';
 
-import {NgModule} from '@angular/core';
+import '@angular/compiler';
+import {DoBootstrap, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
@@ -25,12 +26,13 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 @NgModule({
   imports: [
     BrowserModule,
-    UpgradeModule
+    UpgradeModule,
   ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
   // Override Angular bootstrap so it doesn't do anything
   ngDoBootstrap() {
+    console.log("@Bootstrapping in Hybrid mode with Angular & AngularJS");
   }
 }
 
